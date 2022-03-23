@@ -1,5 +1,8 @@
+import data_settings
 # Constants
 MILLISECONDS = 1000
+SECONDS = 100 * MILLISECONDS
+MINUTES = 60 * SECONDS
 
 # App framework settings
 TITLE = "TSLA Trade Bot"
@@ -10,7 +13,4 @@ DEBUG = True
 PORT = "8050"
 
 # Graph timings
-TSLA_PRICE_GRAPH_INTERVAL = 1 * MILLISECONDS
-
-# API keys
-YF_API_KEY = "YRVHVLiFAt3ANYZf00BXr2LHNfZcgKzdWVmsZ9Xi" # yahoo finance api key
+TSLA_PRICE_GRAPH_INTERVAL = data_settings.LOOK_BACK * MINUTES

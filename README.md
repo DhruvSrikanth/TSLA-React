@@ -9,3 +9,8 @@ chmod +x run_app.sh
 ```
 sh run_app.sh
 ```
+
+Website:
+```
+[localhost](http://127.0.0.1:8050/)
+```
