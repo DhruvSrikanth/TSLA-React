@@ -11,6 +11,5 @@ sh run_app.sh
 ```
 
 Website:
-```
-[localhost](http://127.0.0.1:8050/)
-```
+
+![localhost](http://127.0.0.1:8050/)
