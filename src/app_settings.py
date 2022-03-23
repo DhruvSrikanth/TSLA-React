@@ -11,3 +11,6 @@ PORT = "8050"
 
 # Graph timings
 TSLA_PRICE_GRAPH_INTERVAL = 1 * MILLISECONDS
+
+# API keys
+YF_API_KEY = "YRVHVLiFAt3ANYZf00BXr2LHNfZcgKzdWVmsZ9Xi" # yahoo finance api key
