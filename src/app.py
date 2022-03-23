@@ -18,21 +18,33 @@ import plotly.express as px
 resevoir = data.get_data(data_settings.LOOK_BACK)
 
 app = dash.Dash(title=app_settings.TITLE,
-                update_title=app_settings.UPDATE_TITLE)
-  
-app.layout = html.Div(children=[
-                                    html.H1(children="Tesla's Stock Price"),
+                update_title=app_settings.UPDATE_TITLE, 
+                external_stylesheets=[dbc.themes.LUX])
 
-                                    html.Div(children='''TSLA Close Quote:'''),
+def get_app_layout():
+    title = html.H1(children="Tesla's Stock Price")
 
-                                    dcc.Graph(id = 'tsla-price-graph', 
-                                              animate = True), 
+    price_graph = dbc.Row([
+        html.Div(children='''TSLA Close Quote:'''), 
+        dcc.Graph(
+            id = 'tsla-price-graph', 
+            animate = True), 
+        dcc.Interval(
+            id = 'tsla-price-update', 
+            interval = app_settings.TSLA_PRICE_GRAPH_INTERVAL,
+            n_intervals = 0)
+    ])
 
-                                    dcc.Interval(id = 'tsla-price-update',
-                                                 interval = app_settings.TSLA_PRICE_GRAPH_INTERVAL,
-                                                 n_intervals = 0)
-                                ]
-                     )
+    layout = dbc.Container(children=[
+        dbc.Row(children=[title]), 
+        dbc.Row(children=[price_graph])], 
+        className="m-4", 
+        fluid=True
+        )
+
+    return layout
+
+app.layout = get_app_layout()
   
 @app.callback(Output('tsla-price-graph', 'figure'),
              [Input('tsla-price-update', 'n_intervals')])
